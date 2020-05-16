@@ -1,13 +1,12 @@
 <template>
-    <div id="container"
-         @click="handleClick"></div>
+    <div id="chart"></div>
 </template>
 
 <script>
 import AMap from 'AMap'
 
 export default {
-    name: 'AMap',
+    name: 'BMap',
 
     data () {
         return {
@@ -22,16 +21,15 @@ export default {
     },
 
     mounted () {
-        this.map = new AMap.Map('container', {
+        this.map = new AMap.Map('chart', {
             features: ['bg', 'point'],
             zoomEnable: false
         })
 
-        this.renderMarkers()
+        // this.renderMarkers()
     },
 
     methods: {
-        // 渲染点
         renderMarkers () {
             let res = [
                 { lng: 121.458421, lat: 31.27821, name: '上海易居', address: '上海市静安区xxx', tel: 'xxx-xxxx-xxxx' },
@@ -84,6 +82,7 @@ export default {
                     path: [[item.lng, item.lat], [item.lng, endPoint.lat], [endPoint.lng, endPoint.lat]],
                     strokeColor: '#FF0000',
                     strokeStyle: 'dashed',
+                    strokeWeight: 1,
                     draggable: true
                 })
                 polyline.hide()
@@ -112,22 +111,14 @@ export default {
             this.map.add(this.markers)
             this.map.add(this.infoWindows)
             this.map.add(this.polylines)
-        },
-
-        // 处理点击事件
-        handleClick (e) {
-            if (e.target.className === 'close') {
-                let index = e.target.getAttribute('data-index')
-                this.infoWindows[index].hide()
-                this.polylines[index].hide()
-            }
         }
     }
 }
 </script>
 
 <style lang="less" scoped>
-#container {
+#chart {
+    width: 100%;
     height: 800px;
     position: relative;
 
