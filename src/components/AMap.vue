@@ -24,7 +24,7 @@ export default {
     mounted () {
         this.map = new AMap.Map('container', {
             features: ['bg', 'point'],
-            center: [105.005, 32.349,],
+            // center: [105.005, 32.349,],
             zoomEnable: false
         })
 
@@ -35,11 +35,11 @@ export default {
         // 渲染点
         renderMarkers () {
             let res = [
-                { lng: 105.005, lat: 32.349, name: '1' },
-                { lng: 104.602, lat: 32.067, name: '2' },
-                { lng: 105.272, lat: 32.451, name: '3' },
-                { lng: 105.042, lat: 32.402, name: '4' },
-                { lng: 104.982, lat: 32.24, name: '5' },
+                { lng: 121.458421, lat: 31.27821, name: '上海易居', address: '上海市静安区xxx', tel: 'xxx-xxxx-xxxx' },
+                { lng: 121.499717, lat: 31.239702, name: '东方明珠塔', address: 'xxxxxxx', tel: 'xxx-xxxx-xxxx' },
+                { lng: 121.44532, lat: 31.223505, name: '静安寺', address: 'xxxxxxxxx', tel: 'xxx-xxxx-xxxx' },
+                { lng: 121.339785, lat: 31.196056, name: '虹桥国际机场', address: '虹桥国际机场', tel: 'xxx-xxxx-xxxx' },
+                { lng: 121.808682, lat: 31.142267, name: '浦东国际机场', address: '浦东国际机场', tel: 'xxxxxxxx' },
             ]
 
             res.forEach((item, index) => {
@@ -65,7 +65,16 @@ export default {
                                     <span>${item.name}</span>  
                                     <span class="close" data-index="${index}">+</span>
                                   </div>
-                                  <div class="info-window-body"></div>
+                                  <div class="info-window-body">
+                                    <p class="info-window-address">
+                                        <span class="label">地址：</span>
+                                        <span class="content">${item.address}</span>
+                                    </p>
+                                    <p class="info-window-address">
+                                        <span class="label">电话：</span>
+                                        <span class="content">${item.tel}</span>
+                                    </p>
+                                  </div>
                               </div>`
                 })
 
@@ -132,7 +141,6 @@ export default {
         border: 1px solid #000;
         border-radius: 8px;
         z-index: 999;
-        color: red;
         cursor: move;
         overflow: hidden;
         box-sizing: border-box;
@@ -156,6 +164,25 @@ export default {
 
                 &:hover {
                     color: #409eff;
+                }
+            }
+        }
+
+        .info-window-body {
+            padding: 10px;
+
+            p {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                line-height: 1.5em;
+
+                .label {
+                    width: 50px;
+                }
+
+                .content {
+                    flex: 1;
                 }
             }
         }
