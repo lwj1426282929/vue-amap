@@ -83,8 +83,7 @@ export default {
                 let polyline = new AMap.Polyline({
                     path: [[item.lng, item.lat], [item.lng, endPoint.lat], [endPoint.lng, endPoint.lat]],
                     strokeColor: '#FF0000',
-                    strokeStyle: 'dashed',
-                    draggable: true
+                    strokeStyle: 'dashed'
                 })
                 polyline.hide()
 
